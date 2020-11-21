@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -147,6 +147,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
     <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../articles/tensor-creation.html">Creating tensors</a>
@@ -287,10 +290,10 @@ a real number, otherwise an integer.</p>
 <span class='va'>t2</span> <span class='op'>=</span> <span class='fu'><a href='torch_randn.html'>torch_randn</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>torch_addcdiv</span><span class='op'>(</span><span class='va'>t</span>, <span class='va'>t1</span>, <span class='va'>t2</span>, <span class='fl'>0.1</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; torch_tensor 
-#&gt;  1.5863 -1.9585 -1.5975
-#&gt;  1.3794 -1.5946 -1.7998
-#&gt;  1.5167 -1.8360 -1.6656
+</div><div class='output co'>#&gt; torch_tensor
+#&gt; -0.1881 -0.9928  0.1626
+#&gt; -0.4448 -1.0607  1.9141
+#&gt; -0.2980 -1.0219  0.9129
 #&gt; [ CPUFloatType{3,3} ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

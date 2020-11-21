@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -147,6 +147,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
     <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../articles/tensor-creation.html">Creating tensors</a>
@@ -283,22 +286,23 @@ dimensions, so those need to be explicitly specified.</p>
 <span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='torch_randn.html'>torch_randn</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>5</span>, <span class='fl'>4</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>torch_diagonal</span><span class='op'>(</span><span class='va'>x</span>, offset<span class='op'>=</span><span class='op'>-</span><span class='fl'>1</span>, dim1<span class='op'>=</span><span class='fl'>1</span>, dim2<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; torch_tensor 
+</div><div class='output co'>#&gt; torch_tensor
 #&gt; (1,.,.) = 
-#&gt;   1.1730
-#&gt;   1.6315
+#&gt;   0.6881
+#&gt;  -0.8719
 #&gt; 
 #&gt; (2,.,.) = 
-#&gt;  -0.4452
-#&gt;   2.0812
+#&gt;   0.4958
+#&gt;  -0.1857
 #&gt; 
 #&gt; (3,.,.) = 
-#&gt;   1.1981
-#&gt;  -1.0686
+#&gt;  -1.9839
+#&gt;  -1.5123
 #&gt; 
 #&gt; (4,.,.) = 
-#&gt;   0.9468
-#&gt;  -0.6987
+#&gt;  0.01 *
+#&gt;   2.8443
+#&gt;   -185.8209
 #&gt; [ CPUFloatType{4,2,1} ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

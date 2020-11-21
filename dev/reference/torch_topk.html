@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -147,6 +147,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
     <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../articles/tensor-creation.html">Creating tensors</a>
@@ -219,7 +222,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Topk</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlverse/torch/blob/master/R/gen-namespace-docs.R'><code>R/gen-namespace-docs.R</code></a>, <a href='https://github.com/mlverse/torch/blob/master/R/gen-namespace-examples.R'><code>R/gen-namespace-examples.R</code></a>, <a href='https://github.com/mlverse/torch/blob/master/R/gen-namespace.R'><code>R/gen-namespace.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mlverse/torch/blob/master/R/gen-namespace-docs.R'><code>R/gen-namespace-docs.R</code></a>, <a href='https://github.com/mlverse/torch/blob/master/R/gen-namespace-examples.R'><code>R/gen-namespace-examples.R</code></a>, <a href='https://github.com/mlverse/torch/blob/master/R/wrapers.R'><code>R/wrapers.R</code></a></small>
     <div class="hidden name"><code>torch_topk.Rd</code></div>
     </div>
 
@@ -276,17 +279,17 @@ of the elements in the original <code>input</code> tensor.</p>
 <span class='fu'>torch_topk</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>3</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt; torch_tensor 
+#&gt; torch_tensor
 #&gt;  5
 #&gt;  4
 #&gt;  3
 #&gt; [ CPUFloatType{3} ]
 #&gt; 
 #&gt; [[2]]
-#&gt; torch_tensor 
+#&gt; torch_tensor
+#&gt;  5
 #&gt;  4
 #&gt;  3
-#&gt;  2
 #&gt; [ CPULongType{3} ]
 #&gt; </div></pre>
   </div>

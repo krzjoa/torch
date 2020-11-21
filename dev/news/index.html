@@ -83,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -146,6 +146,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/installation.html">Installation</a>
+    </li>
     <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../articles/tensor-creation.html">Creating tensors</a>
@@ -224,6 +227,76 @@
     <div id="torch-development-version" class="section level1">
 <h1 class="page-header" data-toc-text="development version">
 <a href="#torch-development-version" class="anchor"></a>torch (development version)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Fixed bug that would happen with functions that need to transform tensors from 0-based to 1-based in the GPU. (<a href='https://github.com/mlverse/torch/issues/317'>#317</a>)</li>
+<li>Fixed bug when trying to print the <code>grad_fn</code> of a Tensor that doesn’t have one. See (<a href='https://github.com/mlverse/torch/issues/321'>#321</a>)</li>
+<li>Added <code>$element_size()</code> method (<a href='https://github.com/dirkschumacher'>@dirkschumacher</a> <a href='https://github.com/mlverse/torch/issues/322'>#322</a>)</li>
+<li>Added <code>$bool()</code> method (<a href='https://github.com/dirkschumacher'>@dirkschumacher</a> <a href='https://github.com/mlverse/torch/issues/323'>#323</a>)</li>
+<li>
+<code>torch__addr</code> and <code>torch__addr_</code> have been removed.</li>
+<li>We now check the MD5 hashes of downloaded LibTorch binaries. (<a href='https://github.com/dirkschumacher'>@dirkschumacher</a> <a href='https://github.com/mlverse/torch/issues/325'>#325</a>)</li>
+<li>Refactored the optimizers code to avoid duplication of parameter checks, etc. (<a href='https://github.com/dirkschumacher'>@dirkschumacher</a> <a href='https://github.com/mlverse/torch/issues/328'>#328</a>)</li>
+<li>Added a Distribution abstract class (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/333'>#333</a>)</li>
+<li>Updated to LibTorch 1.7 (<a href='https://github.com/mlverse/torch/issues/337'>#337</a>)</li>
+<li>Fixed <code>torch_argsort</code> and <code>x$argsort</code> to return 1-based indexes (<a href='https://github.com/mlverse/torch/issues/342'>#342</a>)</li>
+<li>Fixed <code>torch_norm</code> so it can be called with a <code>dim</code> argument. (<a href='https://github.com/mlverse/torch/issues/345'>#345</a>)</li>
+<li>We now warn when converting <code>long</code> tensors to R and there’s a chance of an integer overflow. (<a href='https://github.com/mlverse/torch/issues/347'>#347</a>)</li>
+<li>Allow <code>private</code> and <code>active</code> methods in <code>nn_module</code>’s and <code>dataset</code>’s. (<a href='https://github.com/mlverse/torch/issues/349'>#349</a>)</li>
+<li>Fixed crash when calling <code>torch_hann_window</code> with an invalid <code>NULL</code> <code>window_length</code>. (<a href='https://github.com/mlverse/torch/issues/351'>#351</a>)</li>
+<li>Added <code>nn_batch_norm3d</code> (<a href='https://github.com/mattwarkentin'>@mattwarkentin</a> <a href='https://github.com/mlverse/torch/issues/354'>#354</a>)</li>
+<li>Fixed <code>torch_stft</code> calls for LibTorch 1.7 (added the <code>return_complex</code> argument) (<a href='https://github.com/mlverse/torch/issues/355'>#355</a>)</li>
+<li>Fixed bug when strides were NULL in some pooling operations. (<a href='https://github.com/mlverse/torch/issues/361'>#361</a>)</li>
+<li>Added <code>nn_lstm</code> and <code>nn_gru</code> modules. (<a href='https://github.com/mlverse/torch/issues/362'>#362</a>)</li>
+</ul>
+</div>
+    <div id="torch-011" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.1">
+<a href="#torch-011" class="anchor"></a>torch 0.1.1<small> 2020-10-20 </small>
+</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fixed bug that made <code>RandomSampler(replacement = TRUE)</code> to never take the last element in the dataset. (84861fa)</li>
+<li>Fixed <code>torch_topk</code> and <code>x$topk</code> so the returned indexes are 1-based (<a href='https://github.com/mlverse/torch/issues/280'>#280</a>)</li>
+<li>Fixed a bug (<a href='https://github.com/mlverse/torch/issues/275'>#275</a>) that would cause <code>1 - torch_tensor(1, device = "cuda")</code> to fail because <code>1</code> was created in the CPU. (<a href='https://github.com/mlverse/torch/issues/279'>#279</a>)</li>
+<li>We now preserve names in the <code>dataloader</code> output (<a href='https://github.com/mlverse/torch/issues/286'>#286</a>)</li>
+<li>
+<code>torch_narrow</code>, <code>Tensor$narrow()</code> and <code>Tensor$narrow_copy</code> are now indexed starting at 1. (<a href='https://github.com/mlverse/torch/issues/294'>#294</a>)</li>
+<li>
+<code>Tensor$is_leaf</code> is now an active method. (<a href='https://github.com/mlverse/torch/issues/295'>#295</a>)</li>
+<li>Fixed bug when passing equations to <code>torch_einsum</code>. (<a href='https://github.com/mlverse/torch/issues/296'>#296</a>)<br>
+</li>
+<li>Fixed <code><a href="../reference/nn_module_list.html">nn_module_list()</a></code> to correctly name added modules, otherwise they are not returned when doing <code>state_dict()</code> on it. (<a href='https://github.com/mlverse/torch/issues/300'>#300</a>)</li>
+<li>Fixed bug related to random number seeds when using in-place methods. (<a href='https://github.com/mlverse/torch/issues/303'>#303</a>)</li>
+<li>Fixed <code>nn_batchnorm*</code> so it returns the same results as PyTorch (<a href='https://github.com/mlverse/torch/issues/302'>#302</a>)</li>
+<li>Fixed a bug that made <code>nn_module$parameter</code> when there were shared parameters between layers. (<a href='https://github.com/mlverse/torch/issues/306'>#306</a>)</li>
+<li>Fixed <code>$max</code> and <code>$min</code> to return 1-based indexes. (<a href='https://github.com/mlverse/torch/issues/315'>#315</a>)</li>
+</ul>
+</div>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>Expanded the <code>utils_data_default_collate</code> to support converting R objects to torch tensors when needed. (<a href='https://github.com/mlverse/torch/issues/269'>#269</a>)</li>
+<li>Added an <code>as.matrix</code> method for torch Tensors. (<a href='https://github.com/mlverse/torch/issues/282'>#282</a>)</li>
+<li>By default we now truncate the output of <code><a href="https://rdrr.io/r/base/print.html">print(totrch_tensor(1:40))</a></code> if it spans for more than 30 lines. This is useful for not spamming the console or taking very long to print when you print a very large tensor. (<a href='https://github.com/mlverse/torch/issues/283'>#283</a>)</li>
+<li>Added the Adadelta optimizer (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/284'>#284</a>)</li>
+<li>Added support for GPU’s on Windows (<a href='https://github.com/mlverse/torch/issues/281'>#281</a>)</li>
+<li>Added the Adagrad optimizer (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/289'>#289</a>)</li>
+<li>Added RMSprop optimizer (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/290'>#290</a>)</li>
+<li>Added the Rprop optimizer (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/297'>#297</a>)</li>
+<li>Added gradient clipping utilities (<a href='https://github.com/mlverse/torch/issues/299'>#299</a>)</li>
+<li>Added <code>nnf_contrib_sparsemax</code> and <code>nn_contrib_sparsemax</code>. (<a href='https://github.com/mlverse/torch/issues/309'>#309</a>)</li>
+<li>Added ASGD optimizer (<a href='https://github.com/krzjoa'>@krzjoa</a> <a href='https://github.com/mlverse/torch/issues/307'>#307</a>)</li>
+<li>Getters and setters for the number of threads used by torch (<a href='https://github.com/mlverse/torch/issues/311'>#311</a>)</li>
+</ul>
+</div>
+</div>
+    <div id="torch-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#torch-010" class="anchor"></a>torch 0.1.0<small> 2020-09-28 </small>
 </h1>
 <ul>
 <li>Added many missing losses (<a href='https://github.com/mlverse/torch/issues/252'>#252</a>)</li>

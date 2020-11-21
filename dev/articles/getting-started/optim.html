@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -102,7 +102,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Tensors</li>
+<li>
+      <a href="../../articles/installation.html">Installation</a>
+    </li>
+    <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../../articles/tensor-creation.html">Creating tensors</a>
     </li>
@@ -170,7 +173,8 @@
 
       
 
-      </header><script src="optim_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="optim_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="optim_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="optim_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>optim: optimizers in torch</h1>
@@ -186,13 +190,13 @@
 <blockquote>
 <p>Note: This is an R port of the official tutorial available <a href="https://pytorch.org/tutorials/beginner/examples_tensor/two_layer_net_numpy.html#sphx-glr-beginner-examples-tensor-two-layer-net-numpy-py">here</a>. All credits goes to <a href="https://github.com/jcjohnson/pytorch-examples">Justin Johnson</a>.</p>
 </blockquote>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://torch.mlverse.org/docs">torch</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://torch.mlverse.org/docs">torch</a></span><span class="op">)</span></code></pre></div>
 <p>Up to this point we have updated the weights of our models by manually mutating the Tensors holding learnable parameters (with <code>with_no_grad</code> to avoid tracking history in autograd). This is not a huge burden for simple optimization algorithms like stochastic gradient descent, but in practice we often train neural networks using more sophisticated optimizers like AdaGrad, RMSProp, Adam, etc.</p>
 <p>The optim package in torch abstracts the idea of an optimization algorithm and provides implementations of commonly used optimization algorithms.</p>
 <p>In this example we will use the nn package to define our model as before, but we will optimize the model using the Adam algorithm provided by <code>optim</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../../reference/cuda_is_available.html">cuda_is_available</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../../reference/cuda_is_available.html">cuda_is_available</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
    <span class="va">device</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/torch_device.html">torch_device</a></span><span class="op">(</span><span class="st">"cuda"</span><span class="op">)</span>
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
    <span class="va">device</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/torch_device.html">torch_device</a></span><span class="op">(</span><span class="st">"cpu"</span><span class="op">)</span>
@@ -260,12 +264,12 @@
    <span class="co"># parameters</span>
    <span class="va">optimizer</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="co">#&gt; Step: 1 : 1.01382 </span>
-<span class="co">#&gt; Step: 100 : 0.07367104 </span>
-<span class="co">#&gt; Step: 200 : 0.000906363 </span>
-<span class="co">#&gt; Step: 300 : 1.97799e-06 </span>
-<span class="co">#&gt; Step: 400 : 1.829134e-09 </span>
-<span class="co">#&gt; Step: 500 : 7.742299e-13</span></pre></div>
+<span class="co">#&gt; Step: 1 : 1.105148 </span>
+<span class="co">#&gt; Step: 100 : 0.09419812 </span>
+<span class="co">#&gt; Step: 200 : 0.00195441 </span>
+<span class="co">#&gt; Step: 300 : 2.438422e-05 </span>
+<span class="co">#&gt; Step: 400 : 2.53011e-06 </span>
+<span class="co">#&gt; Step: 500 : 2.69219e-07</span></code></pre></div>
 <p>In the <a href="custom-nn.html">next example</a> we will learn how to create custom <code>nn_modules</code>.</p>
   </div>
 

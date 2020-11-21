@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">torch</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.0.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -102,7 +102,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Tensors</li>
+<li>
+      <a href="../../articles/installation.html">Installation</a>
+    </li>
+    <li class="dropdown-header">Tensors</li>
     <li>
       <a href="../../articles/tensor-creation.html">Creating tensors</a>
     </li>
@@ -170,7 +173,8 @@
 
       
 
-      </header><script src="new-autograd-functions_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="new-autograd-functions_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="new-autograd-functions_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="new-autograd-functions_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Defining new autograd functions</h1>
@@ -186,13 +190,13 @@
 <blockquote>
 <p>Note: This is an R port of the official tutorial available <a href="https://pytorch.org/tutorials/beginner/examples_tensor/two_layer_net_numpy.html#sphx-glr-beginner-examples-tensor-two-layer-net-numpy-py">here</a>. All credits goes to <a href="https://github.com/jcjohnson/pytorch-examples">Justin Johnson</a>.</p>
 </blockquote>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://torch.mlverse.org/docs">torch</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://torch.mlverse.org/docs">torch</a></span><span class="op">)</span></code></pre></div>
 <p>Under the hood, each primitive autograd operator is really two functions that operate on Tensors. The forward function computes output Tensors from input Tensors. The backward function receives the gradient of the output Tensors with respect to some scalar value, and computes the gradient of the input Tensors with respect to that same scalar value.</p>
 <p>In torch we can easily define our own autograd operator by defining a subclass of <code>autograd_function</code> and implementing the forward and backward functions. We can then use our new autograd operator by constructing an instance and calling it like a function, passing Tensors containing input data.</p>
 <p>In this example we define our own custom autograd function for performing the ReLU nonlinearity, and use it to implement our two-layer network:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># We can implement our own custom autograd Functions by subclassing</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># We can implement our own custom autograd Functions by subclassing</span>
 <span class="co"># autograd_functioon and implementing the forward and backward passes</span>
 <span class="co"># which operate on Tensors.</span>
 <span class="va">my_relu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/autograd_function.html">autograd_function</a></span><span class="op">(</span>
@@ -275,12 +279,12 @@
       <span class="va">w2</span><span class="op">$</span><span class="va">grad</span><span class="op">$</span><span class="fu">zero_</span><span class="op">(</span><span class="op">)</span>
    <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="co">#&gt; Step: 1 : 27975046 </span>
-<span class="co">#&gt; Step: 100 : 598.5702 </span>
-<span class="co">#&gt; Step: 200 : 3.167813 </span>
-<span class="co">#&gt; Step: 300 : 0.02720692 </span>
-<span class="co">#&gt; Step: 400 : 0.0005246082 </span>
-<span class="co">#&gt; Step: 500 : 7.182448e-05</span></pre></div>
+<span class="co">#&gt; Step: 1 : 33321068 </span>
+<span class="co">#&gt; Step: 100 : 785.7789 </span>
+<span class="co">#&gt; Step: 200 : 8.279955 </span>
+<span class="co">#&gt; Step: 300 : 0.1633262 </span>
+<span class="co">#&gt; Step: 400 : 0.005097657 </span>
+<span class="co">#&gt; Step: 500 : 0.0004221308</span></code></pre></div>
 <p>In the <a href="nn.html">next example</a> we will learn how to use the neural networks abstractions in torch.</p>
   </div>
 
